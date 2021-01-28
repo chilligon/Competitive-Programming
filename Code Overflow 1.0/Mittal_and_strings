@@ -1,0 +1,41 @@
+import java.io.OutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+/**
+ * Built using CHelper plug-in
+ * Actual solution is at the top
+ *
+ * @author chiliagon
+ */
+public class Main {
+    public static void main(String[] args) {
+        InputStream inputStream = System.in;
+        OutputStream outputStream = System.out;
+        Scanner in = new Scanner(inputStream);
+        PrintWriter out = new PrintWriter(outputStream);
+        MittalAndStrings solver = new MittalAndStrings();
+        solver.solve(1, in, out);
+        out.close();
+    }
+
+    static class MittalAndStrings {
+        public void solve(int testNumber, Scanner in, PrintWriter out) {
+            String s = in.next();
+            int count = 0;
+            String t = in.next();
+            for (int i = 0; i < s.length() - t.length() + 1; i++) {
+                StringBuilder sb = new StringBuilder();
+                for (int j = i; j < i + t.length(); j++) {
+                    sb.append(s.charAt(j));
+                }
+                if (sb.toString().equals(t)) count++;
+            }
+            out.println(count);
+        }
+
+    }
+}
+
